@@ -8,12 +8,11 @@ let fetchWeather = (latitude, longitude, callback) => {
         json: true
     }, (error, resp, body) => {
         if(!error && resp.statusCode === 200){
-            callback(undefined, {
+            callback(null, {
                 temperature: body.currently.temperature,
                 apparentTemperature: body.currently.apparentTemperature
             });
-        }
-        else {
+        } else {
             callback('Unable to fetch weather.');
         }
     });

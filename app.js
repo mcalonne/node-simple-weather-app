@@ -22,8 +22,7 @@ let main = () => {
         weatherService.fetchWeather(response.latitude, response.longitude, (errorMessage, weatherData) => {
             if(errorMessage){
                 console.error(errorMessage); 
-            }
-            else{
+            } else {
                 console.log(`Current temperature is ${weatherData.temperature}F. It feels like ${weatherData.apparentTemperature}F.`);
             }
         });

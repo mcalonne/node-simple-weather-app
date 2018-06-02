@@ -21,24 +21,23 @@ let main = () => {
         if(resp.data.status === 'ZERO_RESULTS'){
             throw new Error('Unable to find that address.');
         }
-        var data = resp.data.results[0];
-        var addr = data.formatted_address;
-        var lat = data.geometry.location.lat;
-        var lng = data.geometry.location.lng;
-        console.log(`Retrieve weather for address : ${addr}`);
+        let data = resp.data.results[0];
+        let addr = data.formatted_address;
+        let lat = data.geometry.location.lat;
+        let lng = data.geometry.location.lng;
+        console.debug(`Retrieve weather for address : ${addr}`);
         return axios.get(endpoints.getWheatherForecastUri(lat, lng));
     })
     .then(resp => {
-        var temperature = resp.data.currently.temperature;
-        var apparentTemperature = resp.data.currently.apparentTemperature;
+        let temperature = resp.data.currently.temperature;
+        let apparentTemperature = resp.data.currently.apparentTemperature;
         console.log(`Current temperature is ${temperature}F. It feels like ${apparentTemperature}F.`);
     })
     .catch(err => {
         if(err.code === 'ENOTFOUND'){
-            console.log('Unable to connect to API servers.');
-        }
-        else{
-            console.log(err.message);
+            console.error('Unable to connect to API servers.');
+        } else {
+            console.error(err.message);
         }
     });
 };

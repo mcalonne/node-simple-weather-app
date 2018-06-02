@@ -1,7 +1,7 @@
 const request = require('request');
 const endpoints = require('../endpoints');
 
-// api call wrapped in a es6 promise
+// api call wrapped in an es6 promise
 let geocodeAddress = (encodedAddress)  => {
     return new Promise((resolve, reject) => {
         request({
